@@ -10,7 +10,7 @@ Pode haver alguns erros ou práticas de programação, mas sigo aprendendo a cad
 ### Sobre
 Este projeto foi desenvolvido para estudar o firebase e suas dependencias, como teste de banco.
 Aplicando algns conceitos como login, logout, CRUD.
-![img do Projeto](https://imgur.com/7qqyXst)![img do Projeto](https://imgur.com/xrjXJcO)![img do Projeto](https://imgur.com/m45RwpH)
+![img do Projeto](https://imgur.com/7qqyXst)
 
 ### Pré-Requisito
 Você precisa ter instalado o Node.js
