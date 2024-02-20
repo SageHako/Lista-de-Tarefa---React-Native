@@ -1,4 +1,4 @@
-![Logo do Projeto](https://i.imgur.com/WT8VCoI.jpg | width=100)
+![Logo do Projeto](https://i.imgur.com/WT8VCoI.jpg)
 
 #  📱 QuizApp
 Um app de Lista de Tarefa usanod Firebase RealTime!
