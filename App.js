@@ -3,9 +3,10 @@ import {Keyboard ,StyleSheet, FlatList, Text, View, SafeAreaView, TextInput, Tou
 import Login from './src/components/Login';
 import TaskList from './src/components/Tasklist'
 import Feather from 'react-native-vector-icons/Feather'
+import { HandleAdd } from './src/services/addTask'
+import { styles } from './src/GlobalStyles';
 
-import {child, getDatabase, off, onValue, push, ref, remove, set, update} from 'firebase/database'
-import { database } from './src/services/firebaseConnection'
+import {child, getDatabase, onValue, ref, remove} from 'firebase/database'
 
 export default function App() {
   const[user, setUser] = useState(null)
@@ -38,45 +39,46 @@ export default function App() {
   }, [user])
 
   async function handleAdd(){
+    HandleAdd(user, newTask, key, setTasks)
     //referenciando o banco do firebase
-    const db = getDatabase()
-    const userTaskRef = ref(db, `tarefas/${user}`)
+    // const db = getDatabase()
+    // const userTaskRef = ref(db, `tarefas/${user}`)
 
-    if(newTask === ''){
-      return
-    }
+    // if(newTask === ''){
+    //   return
+    // }
 
-    //editando uma tarefa
-    if(key !== '' ){
-      await update(child(userTaskRef, key), {
-        nome: newTask
-      }).then(()=>{
-        console.log('Atualizado')
-      })
+    // //editando uma tarefa
+    // if(key !== '' ){
+    //   await update(child(userTaskRef, key), {
+    //     nome: newTask
+    //   }).then(()=>{
+    //     console.log('Atualizado')
+    //   })
 
-      Keyboard.dismiss()
-      setNewTask('')
-      setKey('')
-      return
-    }
+    //   Keyboard.dismiss()
+    //   setNewTask('')
+    //   setKey('')
+    //   return
+    // }
 
-    //adicionando tarefa no banco
-    try{
-      const taskKey = await push(userTaskRef, {
-        nome: newTask
-      }).then( ()=>{
-        const datalist = {
-          key: taskKey.key,
-          nome: newTask
-        }
-        setTasks(oldTasks => [...oldTasks, datalist])
-      })      
-      setNewTask('')
-      Keyboard.dismiss()
+    // //adicionando tarefa no banco
+    // try{
+    //   const taskKey = await push(userTaskRef, {
+    //     nome: newTask
+    //   }).then( ()=>{
+    //     const datalist = {
+    //       key: taskKey.key,
+    //       nome: newTask
+    //     }
+    //     setTasks(oldTasks => [...oldTasks, datalist])
+    //   })      
+    //   setNewTask('')
+    //   Keyboard.dismiss()
 
-    }catch(error){
-      console.log(error)
-    }
+    // }catch(error){
+    //   console.log(error)
+    // }
   }
 
   function handleDelete(key){
@@ -147,37 +149,37 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 50,
-    paddingHorizontal: 10,
-    backgroundColor: '#f2f6fc'
-  },
-  containerTask:{
-    flexDirection: 'row'
-  },
-  input:{
-    flex: 1,
-    marginBottom: 10,
-    padding: 10,
-    backgroundColor: '#fff',
-    borderRadius: 4,
-    borderWidth: 1,
-    borderColor: '#141414',
-    height: 45
-  },
-  buttonAdd:{
-    backgroundColor: '#141414',
-    height: 45,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: 5,
-    paddingHorizontal: 14,
-    borderRadius: 4    
-  },
-  buttonText:{
-    color: '#fff',
-    fontSize: 22
-  }
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     paddingTop: 50,
+//     paddingHorizontal: 10,
+//     backgroundColor: '#f2f6fc'
+//   },
+//   containerTask:{
+//     flexDirection: 'row'
+//   },
+//   input:{
+//     flex: 1,
+//     marginBottom: 10,
+//     padding: 10,
+//     backgroundColor: '#fff',
+//     borderRadius: 4,
+//     borderWidth: 1,
+//     borderColor: '#141414',
+//     height: 45
+//   },
+//   buttonAdd:{
+//     backgroundColor: '#141414',
+//     height: 45,
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//     marginLeft: 5,
+//     paddingHorizontal: 14,
+//     borderRadius: 4    
+//   },
+//   buttonText:{
+//     color: '#fff',
+//     fontSize: 22
+//   }
+// });
