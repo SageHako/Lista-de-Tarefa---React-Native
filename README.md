@@ -1,4 +1,4 @@
-![Logo do Projeto](https://i.imgur.com/WT8VCoI.jpg)
+!![img1](assets/fundo.png)
 
 #  📱 QuizApp
 Um app de Lista de Tarefa usanod Firebase RealTime!
@@ -17,7 +17,6 @@ Você precisa ter instalado o Node.js
 * https://nodejs.org/en
 * Vs Code, ou outro ambiente de desenvolvimento.
 * Android Studo -
-* Expo
 
 ### 📦 Dependências utilizadas 
 ```bash
